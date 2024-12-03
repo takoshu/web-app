@@ -8,8 +8,6 @@ function footer() {
                 <span class="text-muted"> &copy; CodeMafia</span>
             </footer>
         </div>
-        <script src="<?php echo BASE_JS_PATH ?>vendor/chart.js"></script>
-        <script src="<?php echo BASE_JS_PATH ?>pie-chart.js"></script>
         <script src="<?php echo BASE_JS_PATH ?>form-validate.js"></script>
     </body>
     </html>

@@ -32,7 +32,10 @@ function post() {
     $topic->id = get_param('topic_id', null);
     $topic->title = get_param('title', null);
     $topic->published = get_param('published', null);
-
+    $topic->laugh = get_param('laugh', null);
+    $topic->touch = get_param('touch', null);
+    $topic->disgust = get_param('disgust', null);
+    $topic->meet = get_param('meet', null);
 
     try {
 

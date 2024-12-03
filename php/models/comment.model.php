@@ -16,6 +16,7 @@ class CommentModel extends AbstractModel
     public string $nickname;
     public string $updated_by;
     public string $updated_at;
+    public int $views;
 
     public function isValidAgree()
     {

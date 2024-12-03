@@ -13,14 +13,36 @@ function index($topic, $is_edit)
             <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>">
             <div class="form-group">
                 <label for="title">タイトル</label>
-                <input type="text" id="title" name="title" value="<?php echo $topic->title?>" class="form-control validate-target" required maxlength="30" autofocus>
+                <input type="text" id="title" name="title" value="<?php echo $topic->title; ?>" class="form-control validate-target" required maxlength="30" autofocus>
                 <div class="invalid-feedback"></div>
+            </div>
+            <div class="row">
+                <div class="form-group col-3">
+                    <label for="title">相手が笑った回数</label>
+                    <input type="text" id="laugh" name="laugh" value="<?php echo $topic->laugh; ?>" class="form-control validate-target" required maxlength="30" autofocus>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group col-3">
+                    <label for="title">ボディタッチした回数</label>
+                    <input type="text" id="touch" name="touch" value="<?php echo $topic->touch; ?>" class="form-control validate-target" required maxlength="30" autofocus>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group col-3">
+                    <label for="title">相手が引いた回数</label>
+                    <input type="text" id="disgust" name="disgust" value="<?php echo $topic->disgust; ?>" class="form-control validate-target" required maxlength="30" autofocus>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group col-3" >
+                    <label for="title" style="margin-bottom: 30px;">会った回数</label>
+                    <input type="text" id="meet" name="meet" value="<?php echo $topic->meet; ?>" class="form-control validate-target" required maxlength="30" autofocus>
+                    <div class="invalid-feedback"></div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="published">ステータス</label>
                 <select name="published" id="published" class="form-control">
-                    <option value="1" <?php echo $topic->published ? 'selected' : ''; ?>>公開</option>
-                    <option value="0" <?php echo $topic->published ? '' : 'selected'; ?>>非公開</option>
+                <option value="0" <?php echo $topic->published === 0 ? 'selected' : ''; ?>>非公開</option>
+                <option value="1" <?php echo $topic->published === 1 ? 'selected' : ''; ?>>公開</option>
                 </select>
             </div>
             <div class="d-flex align-items-center">

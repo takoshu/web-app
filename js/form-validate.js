@@ -7,6 +7,7 @@ function validate_form() {
         return;
     }
 
+    console.log("aaa");
     for(const $input of $inputs) {
         
         $input.addEventListener('input', function(event) {

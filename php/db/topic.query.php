@@ -141,10 +141,14 @@ class TopicQuery
         }
 
         $db = new DataSource;
-        $sql = 'insert into topics(title, published, user_id) values (:title, :published, :user_id)';
+        $sql = 'insert into topics(title, laugh, touch, disgust, meet, published, user_id) values (:title, :laugh, :touch, :disgust, :meet, :published, :user_id)';
 
         return $db->execute($sql, [
             ':title' => $topic->title,
+            ':laugh' => $topic->laugh,
+            ':touch' => $topic->touch,
+            ':disgust' => $topic->disgust,
+            ':meet' => $topic->meet,
             ':published' => $topic->published,
             ':user_id' => $user->id,
         ]);
@@ -162,12 +166,16 @@ class TopicQuery
         
         if($comment->agree) {
 
-            $sql = 'update topics set likes = likes + 1 where id = :topic_id';
+            $sql = 'update topics set likes = 1 where id = :topic_id';
             
         } else {
 
-            $sql = 'update topics set dislikes = dislikes + 1 where id = :topic_id';
+            $sql = 'update topics set dislikes = 1 where id = :topic_id';
 
+        }
+
+        if($comment->view){
+            $sql = 'update topics set views = 1 where id = :topic_id';
         }
 
         return $db->execute($sql, [

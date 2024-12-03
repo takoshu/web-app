@@ -19,6 +19,11 @@ class TopicModel extends AbstractModel
     public string $nickname;
     public string $updated_by;
     public string $updated_at;
+    public int $laugh=2;
+    public int $touch=2;
+    public int $disgust=2;
+    public int $meet=2;
+
     public function isValidId()
     {
         return static::validateId($this->id);
