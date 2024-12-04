@@ -100,6 +100,21 @@ class Auth
         
     }
 
+    public static function seeNowUserPost($topic)
+    {
+        if ($topic === null) {
+                // エラーメッセージを表示するか、適切な処理を行う
+                return true; // 処理を終了
+            }
+        $user = UserModel::getSession();
+        if($user->id==$topic->user_id){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public static function logout() {
         try {
             

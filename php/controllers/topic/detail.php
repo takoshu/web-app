@@ -40,7 +40,7 @@ function post()
     $comment->topic_id = get_param('topic_id', null);
     $comment->agree = get_param('agree', null);
     $comment->body = get_param('body', null);
-    $comment->views = get_param('views', null);
+    //$comment->views = get_param('views', null);
 
     $user = UserModel::getSession();
     $comment->user_id = $user->id;

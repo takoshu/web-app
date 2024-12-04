@@ -16,8 +16,9 @@ class CommentModel extends AbstractModel
     public string $nickname;
     public string $updated_by;
     public string $updated_at;
-    public int $views;
+    public int $views = 0; // デフォルト値を設定
 
+    
     public function isValidAgree()
     {
         return static::validateAgree($this->agree);

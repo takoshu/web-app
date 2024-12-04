@@ -23,6 +23,7 @@ class TopicModel extends AbstractModel
     public int $touch=2;
     public int $disgust=2;
     public int $meet=2;
+    public string $now_user_id;
 
     public function isValidId()
     {

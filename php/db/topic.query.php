@@ -131,6 +131,18 @@ class TopicQuery
         ]);
     }
 
+    public static function delete($topic)
+    {
+
+    $db = new DataSource;
+    $sql = 'delete from topics where id = :id;';
+
+    return $db->execute($sql, [
+        ':id' => $topic->id,
+    ]);
+    
+    }
+
     public static function insert($topic, $user)
     {
 

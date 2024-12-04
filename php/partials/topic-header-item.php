@@ -35,7 +35,7 @@ function chart($topic)
     const myPieChart = new Chart($ctx, {
     type: 'pie', // 円グラフを使用
     data: {
-        labels: ["A型", "O型", "B型", "AB型"],
+        labels: ["a", "b", "c", "d"],
         datasets: [{
             backgroundColor: [
              "#BB5179",
@@ -98,30 +98,34 @@ function comment_form($topic)
 {
 ?>
     <?php if (Auth::isLogin()) : ?>
-        <form action="<?php the_url('topic/detail'); ?>" method="POST" novalidate autocomplete="off">
-            <span class="h4">コメント</span>
-            <?php if ($topic !== null): ?>
-            <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>">
-            <div class="form-group">
-                <textarea class="w-100 border-light" name="body" id="body" rows="5" maxlength="100"></textarea>
-            </div>
-            <div class="container">
-                <div class="row h4 form-group">
-                    <div class="col-auto d-flex align-items-center pl-0">
-                        <div class="form-check-inline">
-                            <input class="form-check-input" type="radio" id="agree" name="agree" value="1" checked>
-                            <label for="agree" class="form-check-label">異議なし</label>
-                        </div>
-                        <div class="form-check-inline">
-                            <input class="form-check-input" type="radio" id="disagree" name="agree" value="0">
-                            <label for="disagree" class="form-check-label">異議あり</label>
-                        </div>
-                    </div>
-                    <input type="submit" value="送信" class="col btn btn-success shadow-sm">
+        <?php if (!Auth::seeNowUserPost($topic)): ?>
+            <form action="<?php the_url('topic/detail'); ?>" method="POST" novalidate autocomplete="off">
+                <span class="h4">コメント</span>
+                <?php if ($topic !== null): ?>
+                <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>">
+                <div class="form-group">
+                    <textarea class="w-100 border-light" name="body" id="body" rows="5" maxlength="100"></textarea>
                 </div>
-            </div>
-            <?php else: ?>
-                <div class="text-center">トピックが見つかりません</div>
+                <div class="container">
+                    <div class="row h4 form-group">
+                        <div class="col-auto d-flex align-items-center pl-0">
+                            <div class="form-check-inline">
+                                <input class="form-check-input" type="radio" id="agree" name="agree" value="1" checked>
+                                <label for="agree" class="form-check-label">異議なし</label>
+                            </div>
+                            <div class="form-check-inline">
+                                <input class="form-check-input" type="radio" id="disagree" name="agree" value="0">
+                                <label for="disagree" class="form-check-label">異議あり</label>
+                            </div>
+                        </div>
+                        <input type="submit" value="送信" class="col btn btn-success shadow-sm">
+                    </div>
+                </div>
+        <?php else: ?>
+            <div class="text-center">トピックが見つかりません</div>
+        <?php endif; ?>
+        <?php else: ?>
+                <div class="text-center">あなたの投稿です</div>
             <?php endif; ?>
         </form>
     <?php else : ?>
